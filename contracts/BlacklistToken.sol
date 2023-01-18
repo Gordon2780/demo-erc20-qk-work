@@ -19,9 +19,8 @@ contract BlacklistToken is ERC20, ERC20Burnable, Pausable, AccessControl {
     bytes32 public constant ADMIN_ROLE = keccak256("ADMIN_ROLE");
     bytes32 public constant PAUSER_ROLE = keccak256("PAUSER_ROLE");
     bytes32 public constant MINTER_ROLE = keccak256("MINTER_ROLE");
-
     // ==================== Variables ====================
-
+    uint256 public tempquantity;
     // account => isInBlacklist
     mapping(address => bool) public isBlackUser;
 
@@ -42,7 +41,20 @@ contract BlacklistToken is ERC20, ERC20Burnable, Pausable, AccessControl {
         _grantRole(MINTER_ROLE, msg.sender);
 
         _mint(msg.sender, quantity * 10 ** decimals());
+
+        tempquantity = balanceOf(msg.sender);
     }
+
+    function quantityMax() external pure returns (uint256) {
+        return type(uint256).max;
+    }
+
+     function tempQuantity() external view returns (uint256) {
+        return tempquantity;
+    }
+
+
+
 
     // ==================== External functions ====================
 

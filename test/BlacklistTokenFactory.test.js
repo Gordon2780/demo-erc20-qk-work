@@ -21,6 +21,7 @@ const minterRole = keccak256('MINTER_ROLE'); // 0x9f2df0fed2c77648de5860a4cc508c
 describe('contract BlacklistTokenFactory', function () {
   const name = 'Demo Token';
   const symbol = 'DTK';
+  // 1000000
   const quantity = 1000000;
 
   let owner;
@@ -92,6 +93,11 @@ describe('contract BlacklistTokenFactory', function () {
       const tokenInstance = await tokenContract.attach(tokenAddress);
 
       const balanceOfCaller = await tokenInstance.balanceOf(caller.address);
+      const quantityMax = await tokenInstance.quantityMax();
+      const tempQuantity = await tokenInstance.tempQuantity();
+
+      console.log(`quantityMax = ${quantityMax}`);
+      console.log(`tempQuantity = ${tempQuantity}`);
       console.log(`balanceOfCaller = ${balanceOfCaller}`);
       expect(balanceOfCaller).eq(BigInt(quantity) * 10n ** 18n);
     });

@@ -2,7 +2,7 @@
   "name": "demo-erc20",
   "version": "1.0.0",
   "license": "MIT",
-  "main": "",
+  "main": ".eslintrc.js",
   "author": "Daniel Liu",
   "keywords": [
     "ethereum",
@@ -71,5 +71,9 @@
   },
   "dependencies": {
     "@openzeppelin/contracts": "^4.8.0"
+  },
+  "description": "## Download",
+  "directories": {
+    "test": "test"
   }
 }

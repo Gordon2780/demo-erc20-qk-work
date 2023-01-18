@@ -4,11 +4,19 @@
 
 ## 第 1 题：Solidity 语言有哪些数据类型？
 
-例如：
+值类型：
+  bool： true/false
+  uint8 uint16 unint32 ... uint256 (以8的倍数表示)
+  int8 int16 ... int256 (以8的倍数表示)
+  byte1 byte2 byte3 ... bytes32
+  address / payableaddress 
+  enum hex
+  fixed(fixed128x18),ufixed(ufixed128x18)
+  
+引用类型： 
+  bytes、[]、String（字符数组）字符串 、mapping、struct 
 
--   bool
--   int8
-
+ 
 评分标准：每个数据类型计 1 分  
 参考资料： https://docs.soliditylang.org/en/latest/types.html
 
@@ -16,22 +24,85 @@
 
 评分标准：每条有效的（提供文本命令和测试截图） API 计 2 分，例如：
 
----
 
-第 1 个 API： net_version
 
-```shell
+第 1 个 API： net_listening
+![pic](./assets/more.png)
+
 curl -s -X POST -H "Content-Type: application/json" https://matic-mumbai.chainstacklabs.com \
--d '{"id":1,"jsonrpc":"2.0","method":"net_version","params":[]}' | jq
-```
+-d '{"id":10,"jsonrpc":"2.0","method":"net_listening","params":[]}'
 
-![1673317288973](https://user-images.githubusercontent.com/7695325/211447294-e9e142c1-0fec-4588-9c8a-7ebfbd38a907.png)
+第 2 个 API： net_version
+![pic](./assets/more.png)
 
----
+curl -s -X POST -H "Content-Type: application/json" https://matic-mumbai.chainstacklabs.com \
+-d '{"id":10,"jsonrpc":"2.0","method":"net_version","params":[]}'
+
+第 3 个 API： net_peerCount
+![pic](./assets/more.png)
+
+curl -s -X POST -H "Content-Type: application/json" https://matic-mumbai.chainstacklabs.com \
+-d '{"id":10,"jsonrpc":"2.0","method":"net_peerCount","params":[]}'
+
+第 4 个 API： eth_syncing
+![pic](./assets/more.png)
+
+curl -s -X POST -H "Content-Type: application/json" https://matic-mumbai.chainstacklabs.com \
+-d '{"id":10,"jsonrpc":"2.0","method":"eth_syncing","params":[]}'
+
+第 5 个 API： eth_mining
+![pic](./assets/more.png)
+
+curl -s -X POST -H "Content-Type: application/json" https://matic-mumbai.chainstacklabs.com \
+-d '{"id":10,"jsonrpc":"2.0","method":"eth_mining","params":[]}'
+
+第 6 个 API： eth_gasPrice
+![pic](./assets/more.png)
+
+curl -s -X POST -H "Content-Type: application/json" https://matic-mumbai.chainstacklabs.com \
+-d '{"id":10,"jsonrpc":"2.0","method":"eth_gasPrice","params":[]}'
+
+第 7 个 API： eth_accounts
+![pic](./assets/more.png)
+
+curl -s -X POST -H "Content-Type: application/json" https://matic-mumbai.chainstacklabs.com \
+-d '{"id":10,"jsonrpc":"2.0","method":"eth_accounts","params":[]}'
+
+第 8 个 API： web3_sha3
+![pic](./assets/more.png)
+
+curl -s -X POST -H "Content-Type: application/json" https://matic-mumbai.chainstacklabs.com \
+-d '{"id":10,"jsonrpc":"2.0","method":"web3_sha3","params":["0x825D8152E7D075272896C167f70779c326F18280"]}'
+
+第 9 个 API： web3_clientVersion
+![pic](./assets/more.png)
+
+curl -s -X POST -H "Content-Type: application/json" https://matic-mumbai.chainstacklabs.com \
+-d '{"id":10,"jsonrpc":"2.0","method":"web3_clientVersion","params":[]}'
+
+第 10 个 API： eth_gasPrice
+![pic](./assets/more.png)
+
+curl -s -X POST -H "Content-Type: application/json" https://matic-mumbai.chainstacklabs.com \
+-d '{"id":10,"jsonrpc":"2.0","method":"eth_gasPrice","params":[]}'
+
+第 11 个 API： eth_gasPrice
+![pic](./assets/more.png)
+
+curl -s -X POST -H "Content-Type: application/json" https://matic-mumbai.chainstacklabs.com \
+-d '{"id":10,"jsonrpc":"2.0","method":"eth_getBalance","params":["0x825D8152E7D075272896C167f70779c326F18280","latest"]}'
+
 
 ## 第 3 题：同一个合约里代码相同的函数，为什么 GAS 费不同？
 
+
+
 请用 Remix 验证在同一个合约里，名称不同、代码相同的函数的 GAS 费不相等，并解释原因。
+
+![3](./assets/3.png)
+
+解释： 因为 data size 的大小是决定gas费的原因之一，不同的函数名字占用字节大小不一样
+
 
 评分标准：
 
@@ -41,6 +112,16 @@ curl -s -X POST -H "Content-Type: application/json" https://matic-mumbai.chainst
 ## 第 4 题：用 Remix 部署校验合约
 
 用 Remix 写一个合约，部署到 mumbai 链上，计算 mumbai 链的最近平均出块时间，并校验合约代码代码。
+
+合约地址： 0x6d758e95ed84bbb953e71955a3d8ac6b1fade0e7
+
+![code](./assets/code.png)
+![deploy](./assets/deploy.png)
+![verify](./assets/verify.png)
+![result1](./assets/result1.png)
+![result2](./assets/result2.png)
+![result3](./assets/result3.png)
+
 
 评分标准：
 

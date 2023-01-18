@@ -20,7 +20,7 @@
   "[toml]": {
     "editor.defaultFormatter": "tamasfe.even-better-toml"
   },
-  "window.commandCenter": true,
+  "window.commandCenter": false,
   "window.zoomLevel": 1,
   "workbench.editor.enablePreview": false
 }
