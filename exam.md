@@ -136,6 +136,11 @@ curl -s -X POST -H "Content-Type: application/json" https://matic-mumbai.chainst
 
 因为本代码仓库里的 BlacklistTokenFactory 合约里有 bug，导致有些测试用例失败，请修复 contracts/BlacklistTokenFactory.sol，通过全部测试。
 
+![blacklist_token_factory](./assets/blacklist_token_factory-bug.png)
+![blacklist_token_factory](./assets/blacklist_token_factory.png)
+![WechatIMG165](./assets/WechatIMG165.png)
+
+
 评分标准：
 
 -   找到 Bug：截图 10 分
